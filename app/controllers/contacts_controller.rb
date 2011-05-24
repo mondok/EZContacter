@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.xml
   def index
-    @contacts = Contact.all
+    @contacts = Contact.all.select{|c| c.user_id == current_user.id}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new.xml
   def new
     @contact = Contact.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @contact }
@@ -42,7 +42,7 @@ class ContactsController < ApplicationController
   # POST /contacts.xml
   def create
     @contact = Contact.new(params[:contact])
-
+    @contact.user = current_user
     respond_to do |format|
       if @contact.save
         format.html { redirect_to(@contact, :notice => 'Contact was successfully created.') }
@@ -58,7 +58,7 @@ class ContactsController < ApplicationController
   # PUT /contacts/1.xml
   def update
     @contact = Contact.find(params[:id])
-
+    @contact.user = current_user
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
         format.html { redirect_to(@contact, :notice => 'Contact was successfully updated.') }
