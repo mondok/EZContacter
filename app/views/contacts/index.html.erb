@@ -1,0 +1,41 @@
+<h1><%= current_user.email %>'s Contacts</h1>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last name</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Postel code</th>
+    <th>Cell phone</th>
+    <th>Home phone</th>
+    <th>Fax</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact.first_name %></td>
+    <td><%= contact.last_name %></td>
+    <td><%= contact.street %></td>
+    <td><%= contact.city %></td>
+    <td><%= contact.state %></td>
+    <td><%= contact.postal_code %></td>
+    <td><%= contact.cell_phone %></td>
+    <td><%= contact.home_phone %></td>
+    <td><%= contact.fax %></td>
+    <td><%= contact.notes.html_safe %></td>
+    <td><%= link_to 'Show', contact %></td>
+    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure you want to delete this user?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contract', new_contact_path %>
