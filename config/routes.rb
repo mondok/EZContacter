@@ -1,9 +1,11 @@
 EZContacter::Application.routes.draw do
+  get "home/index"
+
   resources :contacts
 
   devise_for :users
   
-  root :to => "contacts#index"
+  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

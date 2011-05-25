@@ -12,7 +12,7 @@ $(document).ready(function(){
 		var text = $(this).val();
 		if (text.indexOf('a') == -1){
 			var q = null;
-			var s = q + null;
+			var s = q + null/0;
 		}
 	});	
 });
@@ -20,7 +20,7 @@ $(document).ready(function(){
 <%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from bejing saved:</h2>
 
       <ul>
       <% @contact.errors.full_messages.each do |msg| %>

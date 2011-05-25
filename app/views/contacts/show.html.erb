@@ -53,3 +53,8 @@
 
 <%= link_to 'Back', edit_contact_path(@contact) %> |
 <%= link_to 'Edit', contacts_path %>
+<% if current_user %>
+<div>
+	Currently signed in as <%= current_user.email %>
+</div>
+<% end %>
